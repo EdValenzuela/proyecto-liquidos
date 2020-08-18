@@ -4,17 +4,45 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
   min-height: 100%;
 }
 header {
-  background-color: #ec3a49;
-  color: white;
+  background-color: #000;
   padding: 5rem 0;
 }
 h1 {
-  color: white;
   font-weight: 900;
   text-align: center;
   font-size: 3rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron {
+  padding: 2rem 2rem;
+}
+
+.cont-img{
+  position: relative;
+}
+
+.cont-img .Detail__poster.Detail__poster_blured {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: .8;
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+  -webkit-transform: scale(0.8) translateY(-20px);
+      -ms-transform: scale(0.8) translateY(-20px);
+          transform: scale(0.8) translateY(-20px);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.cont-img .Detail__poster {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 50%;
+  border-radius: 15px;
 }

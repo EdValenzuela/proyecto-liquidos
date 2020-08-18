@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Receta = ({receta}) => {
     return (
@@ -13,10 +14,10 @@ const Receta = ({receta}) => {
                     alt={receta.strDrink} 
                 />
                 <div className="card-body">
-                    <button type="button" 
+                    <Link to={`/detalle/${receta.idDrink}`}
                         className="btn btn-warning btn-block btn-lg text-dark">
-                            ver más
-                    </button>
+                        ver más
+                    </Link>
                 </div>
             </div>
         </div>

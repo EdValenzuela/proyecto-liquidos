@@ -5,7 +5,7 @@ import Receta from './Receta';
 const RecetasItem = () => {
 
     const { recetas } = useContext(RecetaContext);
-    console.log(recetas);
+    //console.log(recetas);
 
     return (
         <div className="row mt-5">

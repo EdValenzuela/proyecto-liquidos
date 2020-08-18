@@ -25,7 +25,7 @@ const RecetasContext = (props) => {
                 getRecetas();
             }
         } catch (error) {
-            
+            console.log(error);
         }
     }, [buscar])
 

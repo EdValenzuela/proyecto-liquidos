@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import { CategContext } from '../context/CategoriasContext';
 import { RecetaContext } from '../context/RecetasContext';
+import ErrorInput from './ErrorInput';
 
 const Form = () => {
     
@@ -13,6 +14,8 @@ const Form = () => {
         categoria: ''
     });
 
+    const [error, setError] = useState(false);
+
     const hanbleInputChange = e =>{
         setInput({
             ...input,//Guardo el resultado anterior
@@ -22,6 +25,18 @@ const Form = () => {
 
     const handleSubmit = e =>{
         e.preventDefault();
+
+        if(input.nombre.trim() === ''){
+            console.log('input vacio !');
+            setError(true);
+            return;
+        }
+        if(!input.categoria){
+            console.log('categoria select vacia !');
+            setError(true);
+            return;
+        }
+        setError(false);
         setBuscar(input);
         setDisponible(true);
     }
@@ -31,9 +46,9 @@ const Form = () => {
             className="col-12"
             onSubmit={ handleSubmit }
             >
-            <h2 className="text-center mb-5"> Buscar bebidas por categoria o ingredientes </h2>
+            <h2 className="text-center mb-5"> Buscar bebidas por ingredientes y categoría </h2>
         
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-md-4">
                     <input  
                         name="nombre"
@@ -71,6 +86,8 @@ const Form = () => {
                     </button>
                 </div>
             </div>
+
+            { error ? <ErrorInput mensaje="Error detectado !"/> : null}
         </form>
     )
 }

@@ -12,6 +12,7 @@ const CategoriasContext = (props) => {
                 const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
                 const resp = await fetch(url);
                 const {drinks} = await resp.json();
+                //console.log(drinks)
                 setCategorias(drinks);
             } catch (error) {
                 console.log(error)
