@@ -1,3 +1,16 @@
+# APP Liquidoscl :beers:
+# escalab :rocket:
+
+## Demo proyecto alojado en netlify [Click Aquí](https://zen-borg-a18e1d.netlify.app/)
+
+![2020-08-18 13_28_45-Window](https://user-images.githubusercontent.com/39087254/90545581-daa67300-e156-11ea-8c1f-aeede061871b.png)
+
+### Información del API
+**Thecocktaildb**
+> https://www.thecocktaildb.com/api.php
+
+<br/>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
