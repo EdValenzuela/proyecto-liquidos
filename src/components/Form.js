@@ -14,7 +14,10 @@ const Form = () => {
         categoria: ''
     });
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({
+        errorInput : false,
+        errorSelect : false
+    });
 
     const hanbleInputChange = e =>{
         setInput({
@@ -28,15 +31,23 @@ const Form = () => {
 
         if(input.nombre.trim() === ''){
             console.log('input vacio !');
-            setError(true);
+            setError({
+                errorInput: true
+            })
+            
             return;
         }
         if(!input.categoria){
             console.log('categoria select vacia !');
-            setError(true);
+            setError({
+                errorSelect: true
+            });
             return;
         }
-        setError(false);
+        setError({
+            errorInput: false,
+            errorSelect: false
+        });
         setBuscar(input);
         setDisponible(true);
     }
@@ -46,7 +57,7 @@ const Form = () => {
             className="col-12"
             onSubmit={ handleSubmit }
             >
-            <h2 className="text-center mb-5"> Buscar bebidas por ingredientes y categoría </h2>
+            <h2 className="mb-5 text-dark"> Buscar bebidas por ingredientes y categoría </h2>
         
             <div className="row mb-5">
                 <div className="col-md-4">
@@ -87,7 +98,8 @@ const Form = () => {
                 </div>
             </div>
 
-            { error ? <ErrorInput mensaje="Error detectado !"/> : null}
+            { error.errorInput && (<ErrorInput mensaje="Ingrese un ingrediente !"/>)}
+            { error.errorSelect &&  (<ErrorInput mensaje="Seleccione una categoría !"/>)}
         </form>
     )
 }

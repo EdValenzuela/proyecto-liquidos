@@ -25,23 +25,23 @@ const RecetaDetalle = () => {
 
     return (
         <>
-        <h1 className="text-uppercase my-5">detalle del producto </h1>
-        <div className="row d-flex justify-content-center mr-0 ml-0">
+        <h1 className="text-uppercase mb-5 text-dark">detalle del producto </h1>
+        <div className="d-flex justify-content-center mr-0 ml-0">
             
             {
-                results.map( ({idDrink, strDrink, strCategory, strDrinkThumb, strInstructions}) => (
-                    <div key={idDrink} className="jumbotron col-md-4">
+                results.map( ({idDrink, strDrink, strCategory, strDrinkThumb, strInstructions, dateModified}) => (
+                    <div key={idDrink} className="jumbotron text-warning bg-dark col-md-8">
                         <h1 className="display-4">{strDrink}</h1>
                         <p className="lead">{strCategory}</p>
                         <hr className="my-4" />
                         <p>{strInstructions}</p>
-                        
+                        <small class="text-muted">Actualizado: {dateModified}</small>
                         <div className="cont-img my-5">
                             <img className="Detail__poster Detail__poster_blured" src={strDrinkThumb} alt={strDrink}/>
                             <img src={strDrinkThumb} className="Detail__poster d-block m-auto" alt={strDrink}/>
                         </div>
                         
-                        <Link className="btn btn-secondary btn-lg m-auto d-block" to='/'> Volver</Link>
+                        <Link className="btn btn-warning text-dark btn-lg m-auto d-block" to='/'> Volver</Link>
                     </div>
                 ))
 
