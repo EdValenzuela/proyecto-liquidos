@@ -17,20 +17,19 @@ const RecetasRouter = () => {
         <HashRouter basename="/">
             <Header/>
                 <div className="container mt-5">
-                    <div className="row justify-content-center">   
                     <Switch>
                         <Route exact path="/">
                             <CategoriasContext>
-                                <RecetasContext>
-                                    <Form/>
-                                    <RecetasItem/>
+                                <RecetasContext>  
+                                        <Form/>
+                                        <RecetasItem/>
                                 </RecetasContext>
                             </CategoriasContext>
                         </Route>
-                        <Route exact path="/detalle/:id" component={ RecetaDetalle } />
+                            <Route exact path="/detalle/:id" component={ RecetaDetalle } />
                         <Redirect to='/' />
                     </Switch>
-                    </div>
+                    
                 </div>
         </HashRouter>
     )

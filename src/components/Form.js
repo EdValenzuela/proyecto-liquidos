@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { CategContext } from '../context/CategoriasContext';
 import { RecetaContext } from '../context/RecetasContext';
 import ErrorInput from './ErrorInput';
+import RecetasCategorias from './RecetasCategorias';
 
 const Form = () => {
     
@@ -13,6 +14,8 @@ const Form = () => {
         nombre: '',
         categoria: ''
     });
+
+    const { nombre, categoria } = input;
 
     const [error, setError] = useState({
         errorInput : false,
@@ -29,7 +32,7 @@ const Form = () => {
     const handleSubmit = e =>{
         e.preventDefault();
 
-        if(input.nombre.trim() === ''){
+        if(nombre.trim() === ''){
             console.log('input vacio !');
             setError({
                 errorInput: true
@@ -37,7 +40,7 @@ const Form = () => {
             
             return;
         }
-        if(!input.categoria){
+        if(!categoria){
             console.log('categoria select vacia !');
             setError({
                 errorSelect: true
@@ -49,44 +52,37 @@ const Form = () => {
             errorSelect: false
         });
         setBuscar(input);
+
+        //Valido que esta disponible para hacer el submit en context
         setDisponible(true);
+
+        //Dejo mis campos limpios
+        setInput({
+            nombre: '',
+            categoria:''
+        })
     }
 
     return (
+        <div className="row">
         <form 
             className="col-12"
             onSubmit={ handleSubmit }
             >
-            <h2 className="mb-5 text-dark"> Buscar bebidas por ingredientes y categoría </h2>
         
-            <div className="row mb-5">
+            <div className="row mb-5 align-items-center">
                 <div className="col-md-4">
                     <input  
                         name="nombre"
                         className="form-control"
                         type="text"
-                        placeholder="Buscar por ingrediente"
+                        placeholder="Agregar ingrediente"
+                        value={nombre}
                         onChange={ hanbleInputChange }
                     />
                 </div>
-                <div className="col-md-4">
-                    <select
-                        onChange={hanbleInputChange}
-                        className="form-control"
-                        name="categoria"
-                    >
-                        <option value="">Selecciona Categoría</option>
-                        {
-                            categorias.map(item => (
-                                <option 
-                                    key={ item.strCategory }
-                                    value={ item.strCategory }
-                                    > 
-                                    { item.strCategory }
-                                </option>
-                            ))
-                        }
-                    </select>
+                <div className="col-md-4 my-md-0 my-3">
+                    <RecetasCategorias categorias={categorias} hanbleInputChange={hanbleInputChange}/>
                 </div>
                 <div className="col-md-4">
                     <button
@@ -101,6 +97,7 @@ const Form = () => {
             { error.errorInput && (<ErrorInput mensaje="Ingrese un ingrediente !"/>)}
             { error.errorSelect &&  (<ErrorInput mensaje="Seleccione una categoría !"/>)}
         </form>
+        </div>
     )
 }
 
